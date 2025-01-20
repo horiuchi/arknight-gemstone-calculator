@@ -5,7 +5,7 @@ import {
   WorkbenchItems,
 } from './types';
 
-const valueMap: Record<Kinds, Record<number, number>> = {
+export const valueMap: Record<Kinds, Record<number, number>> = {
   fire: {
     0: 1,
     1: 2,
