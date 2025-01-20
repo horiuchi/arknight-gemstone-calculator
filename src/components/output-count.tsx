@@ -33,7 +33,7 @@ export function OutputCount({ values }: OutputCountProps) {
                   <Input
                     key={kind}
                     value={value}
-                    className='w-16 text-center'
+                    className='w-24 text-center'
                     readOnly
                   />
                 </>

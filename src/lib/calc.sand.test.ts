@@ -6,7 +6,7 @@ describe('結晶増殖コース', () => {
       {
         fire: 0,
         sky: 0,
-        glass: 0,
+        grass: 0,
         sand: 100,
       },
       0,
@@ -26,7 +26,7 @@ describe('結晶増殖コース', () => {
     expect(result).toMatchObject({
       fire: { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 },
       sky: { 0: 0, 1: 0, 2: 0, 3: 0 },
-      glass: { 0: 0, 1: 0, 2: 0, 3: 0 },
+      grass: { 0: 0, 1: 0, 2: 0, 3: 0 },
       sand: { 0: 600 },
     });
   });
@@ -35,13 +35,13 @@ describe('結晶増殖コース', () => {
       {
         fire: 0,
         sky: 0,
-        glass: 50,
+        grass: 50,
         sand: 50,
       },
       600,
       {
         bench: [
-          { kind: 'glass', grade: 0, level: 0 },
+          { kind: 'grass', grade: 0, level: 0 },
           { kind: 'sand', grade: 0, level: 1 },
           { kind: 'sand', grade: 1, level: 1 },
           'locked',
@@ -55,7 +55,7 @@ describe('結晶増殖コース', () => {
     expect(result).toMatchObject({
       fire: { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 },
       sky: { 0: 0, 1: 0, 2: 0, 3: 0 },
-      glass: { 0: 0, 1: 25, 2: 0, 3: 0 },
+      grass: { 0: 0, 1: 25, 2: 0, 3: 0 },
       sand: { 0: 1125 },
     });
   });
@@ -64,13 +64,13 @@ describe('結晶増殖コース', () => {
       {
         fire: 18,
         sky: 19,
-        glass: 13,
+        grass: 13,
         sand: 50,
       },
       1850,
       {
         bench: [
-          { kind: 'glass', grade: 0, level: 0 },
+          { kind: 'grass', grade: 0, level: 0 },
           { kind: 'sand', grade: 0, level: 2 },
           { kind: 'sand', grade: 1, level: 2 },
           'locked',
@@ -84,7 +84,7 @@ describe('結晶増殖コース', () => {
     expect(result).toMatchObject({
       fire: { 0: 18, 1: 0, 2: 0, 3: 0, 4: 0 },
       sky: { 0: 19, 1: 0, 2: 0, 3: 0 },
-      glass: { 0: 0, 1: 7, 2: 0, 3: 0 },
+      grass: { 0: 0, 1: 7, 2: 0, 3: 0 },
       sand: { 0: 2240 },
     });
   });
@@ -93,13 +93,13 @@ describe('結晶増殖コース', () => {
       {
         fire: 14,
         sky: 15,
-        glass: 21,
+        grass: 21,
         sand: 50,
       },
       4162,
       {
         bench: [
-          { kind: 'glass', grade: 0, level: 1 },
+          { kind: 'grass', grade: 0, level: 1 },
           { kind: 'sand', grade: 0, level: 2 },
           { kind: 'sand', grade: 1, level: 2 },
           'locked',
@@ -113,7 +113,7 @@ describe('結晶増殖コース', () => {
     expect(result).toMatchObject({
       fire: { 0: 14, 1: 0, 2: 0, 3: 0, 4: 0 },
       sky: { 0: 15, 1: 0, 2: 0, 3: 0 },
-      glass: { 0: 0, 1: 17, 2: 0, 3: 0 },
+      grass: { 0: 0, 1: 17, 2: 0, 3: 0 },
       sand: { 0: 2160 },
     });
   });
@@ -122,7 +122,7 @@ describe('結晶増殖コース', () => {
       {
         fire: 20,
         sky: 13,
-        glass: 17,
+        grass: 17,
         sand: 50,
       },
       6436,
@@ -142,7 +142,7 @@ describe('結晶増殖コース', () => {
     expect(result).toMatchObject({
       fire: { 0: 20, 1: 0, 2: 0, 3: 0, 4: 0 },
       sky: { 0: 13, 1: 0, 2: 0, 3: 0 },
-      glass: { 0: 17, 1: 0, 2: 0, 3: 0 },
+      grass: { 0: 17, 1: 0, 2: 0, 3: 0 },
       sand: { 0: 18000 },
     });
   });

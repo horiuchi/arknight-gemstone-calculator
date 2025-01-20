@@ -6,7 +6,7 @@ describe('融合再誕コース', () => {
       {
         fire: 0,
         sky: 50,
-        glass: 0,
+        grass: 0,
         sand: 50,
       },
       0,
@@ -26,7 +26,7 @@ describe('融合再誕コース', () => {
     expect(result).toMatchObject({
       fire: { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 },
       sky: { 0: 0, 1: 50, 2: 0, 3: 0 },
-      glass: { 0: 0, 1: 0, 2: 0, 3: 0 },
+      grass: { 0: 0, 1: 0, 2: 0, 3: 0 },
       sand: { 0: 0 },
     });
   });
@@ -35,13 +35,13 @@ describe('融合再誕コース', () => {
       {
         fire: 0,
         sky: 30,
-        glass: 70,
+        grass: 70,
         sand: 0,
       },
       150,
       {
         bench: [
-          { kind: 'glass', grade: 0, level: 0 },
+          { kind: 'grass', grade: 0, level: 0 },
           { kind: 'sky', grade: 0, level: 1 },
           { kind: 'sky', grade: 1, level: 1 },
           'locked',
@@ -55,7 +55,7 @@ describe('融合再誕コース', () => {
     expect(result).toMatchObject({
       fire: { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 },
       sky: { 0: 0, 1: 0, 2: 33, 3: 0 },
-      glass: { 0: 0, 1: 2, 2: 0, 3: 0 },
+      grass: { 0: 0, 1: 2, 2: 0, 3: 0 },
       sand: { 0: 0 },
     });
   });
@@ -64,13 +64,13 @@ describe('融合再誕コース', () => {
       {
         fire: 18,
         sky: 50,
-        glass: 13,
+        grass: 13,
         sand: 19,
       },
       1381,
       {
         bench: [
-          { kind: 'glass', grade: 0, level: 2 },
+          { kind: 'grass', grade: 0, level: 2 },
           { kind: 'sky', grade: 0, level: 1 },
           { kind: 'sky', grade: 1, level: 1 },
           'locked',
@@ -84,7 +84,7 @@ describe('融合再誕コース', () => {
     expect(result).toMatchObject({
       fire: { 0: 18, 1: 0, 2: 0, 3: 0, 4: 0 },
       sky: { 0: 0, 1: 28, 2: 13, 3: 0 },
-      glass: { 0: 0, 1: 0, 2: 0, 3: 0 },
+      grass: { 0: 0, 1: 0, 2: 0, 3: 0 },
       sand: { 0: 0 },
     });
   });
@@ -93,13 +93,13 @@ describe('融合再誕コース', () => {
       {
         fire: 14,
         sky: 50,
-        glass: 21,
+        grass: 21,
         sand: 15,
       },
       2384,
       {
         bench: [
-          { kind: 'glass', grade: 0, level: 2 },
+          { kind: 'grass', grade: 0, level: 2 },
           { kind: 'sky', grade: 0, level: 2 },
           { kind: 'sky', grade: 1, level: 1 },
           'locked',
@@ -113,7 +113,7 @@ describe('融合再誕コース', () => {
     expect(result).toMatchObject({
       fire: { 0: 14, 1: 0, 2: 0, 3: 0, 4: 0 },
       sky: { 0: 0, 1: 22, 2: 21, 3: 0 },
-      glass: { 0: 0, 1: 0, 2: 0, 3: 0 },
+      grass: { 0: 0, 1: 0, 2: 0, 3: 0 },
       sand: { 0: 0 },
     });
   });
@@ -122,13 +122,13 @@ describe('融合再誕コース', () => {
       {
         fire: 20,
         sky: 50,
-        glass: 17,
+        grass: 17,
         sand: 13,
       },
       3786,
       {
         bench: [
-          { kind: 'glass', grade: 0, level: 2 },
+          { kind: 'grass', grade: 0, level: 2 },
           { kind: 'sky', grade: 0, level: 2 },
           { kind: 'sky', grade: 1, level: 1 },
           'locked',
@@ -142,7 +142,7 @@ describe('融合再誕コース', () => {
     expect(result).toMatchObject({
       fire: { 0: 20, 1: 0, 2: 0, 3: 0, 4: 0 },
       sky: { 0: 0, 1: 23, 2: 17, 3: 0 },
-      glass: { 0: 0, 1: 0, 2: 0, 3: 0 },
+      grass: { 0: 0, 1: 0, 2: 0, 3: 0 },
       sand: { 0: 0 },
     });
   });

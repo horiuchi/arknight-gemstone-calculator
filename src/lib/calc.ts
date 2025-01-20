@@ -19,7 +19,7 @@ export const valueMap: Record<Kinds, Record<number, number>> = {
     2: 22,
     3: 105,
   },
-  glass: {
+  grass: {
     0: 1,
     1: 5,
     2: 50,
@@ -39,7 +39,7 @@ export function calculate(
   const result: ValuePerKindsWithLevel = {
     fire: { 0: values.fire, 1: 0, 2: 0, 3: 0, 4: 0 },
     sky: { 0: values.sky, 1: 0, 2: 0, 3: 0 },
-    glass: { 0: values.glass, 1: 0, 2: 0, 3: 0 },
+    grass: { 0: values.grass, 1: 0, 2: 0, 3: 0 },
     sand: { 0: values.sand },
   };
 
@@ -155,7 +155,7 @@ export function calculate(
             }
 
             const value1 = result.sky[1];
-            const value2 = result.glass[1];
+            const value2 = result.grass[1];
             if (value1 <= 0 || value2 <= 0) {
               break;
             }
@@ -163,11 +163,11 @@ export function calculate(
             if (level < 2) {
               const value = Math.min(value1, value2);
               result.sky[1] -= value;
-              result.glass[1] -= value;
+              result.grass[1] -= value;
               result.sky[2] += value;
             } else {
               result.sky[1] = 0;
-              result.glass[1] = 0;
+              result.grass[1] = 0;
               result.sky[2] += Math.ceil((value1 + value2) / 2);
             }
             break;
@@ -198,12 +198,12 @@ export function calculate(
         }
         break;
 
-      case 'glass':
+      case 'grass':
         switch (grade) {
           case 0: {
-            const value = result.glass[0];
-            result.glass[0] = 0;
-            result.glass[1] += Math.ceil(
+            const value = result.grass[0];
+            result.grass[0] = 0;
+            result.grass[1] += Math.ceil(
               value * (level === 0 ? 0.5 : level === 1 ? 0.8 : 1),
             );
             result.sand[0] += Math.floor(
@@ -215,9 +215,9 @@ export function calculate(
             break;
           }
           case 1: {
-            const value = result.glass[1];
-            result.glass[1] = 0;
-            result.glass[2] += Math.ceil(
+            const value = result.grass[1];
+            result.grass[1] = 0;
+            result.grass[2] += Math.ceil(
               value * (level === 0 ? 0.4 : level === 1 ? 0.6 : 0.8),
             );
             result.sand[0] += Math.floor(
@@ -229,9 +229,9 @@ export function calculate(
             break;
           }
           case 2: {
-            const value = result.glass[2];
-            result.glass[2] = 0;
-            result.glass[3] += Math.ceil(
+            const value = result.grass[2];
+            result.grass[2] = 0;
+            result.grass[3] += Math.ceil(
               value * (level === 0 ? 0.3 : level === 1 ? 0.5 : 0.7),
             );
             result.sand[0] += Math.floor(
@@ -264,7 +264,7 @@ export function calculate(
   }
 
   let count = 0;
-  for (const kind of ['fire', 'sky', 'glass', 'sand'] as const) {
+  for (const kind of ['fire', 'sky', 'grass', 'sand'] as const) {
     const k = result[kind];
     for (const [l, v] of Object.entries(k)) {
       let up = valueMap[kind][Number(l)] ?? 0;

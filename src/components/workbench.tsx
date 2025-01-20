@@ -61,15 +61,15 @@ export function Workbench({ item, onChangeItem }: WorkbenchProps) {
         </SelectGroup>
         <SelectGroup>
           <SelectLabel></SelectLabel>
-          <SelectItem value='glass-0-0'>初級ろ過精製I</SelectItem>
-          <SelectItem value='glass-0-1'>中級ろ過精製I</SelectItem>
-          <SelectItem value='glass-0-2'>上級ろ過精製I</SelectItem>
-          <SelectItem value='glass-1-0'>初級ろ過精製II</SelectItem>
-          <SelectItem value='glass-1-1'>中級ろ過精製II</SelectItem>
-          <SelectItem value='glass-1-2'>上級ろ過精製II</SelectItem>
-          <SelectItem value='glass-2-0'>初級ろ過精製III</SelectItem>
-          <SelectItem value='glass-2-1'>中級ろ過精製III</SelectItem>
-          <SelectItem value='glass-2-2'>上級ろ過精製III</SelectItem>
+          <SelectItem value='grass-0-0'>初級ろ過精製I</SelectItem>
+          <SelectItem value='grass-0-1'>中級ろ過精製I</SelectItem>
+          <SelectItem value='grass-0-2'>上級ろ過精製I</SelectItem>
+          <SelectItem value='grass-1-0'>初級ろ過精製II</SelectItem>
+          <SelectItem value='grass-1-1'>中級ろ過精製II</SelectItem>
+          <SelectItem value='grass-1-2'>上級ろ過精製II</SelectItem>
+          <SelectItem value='grass-2-0'>初級ろ過精製III</SelectItem>
+          <SelectItem value='grass-2-1'>中級ろ過精製III</SelectItem>
+          <SelectItem value='grass-2-2'>上級ろ過精製III</SelectItem>
         </SelectGroup>
         <SelectGroup>
           <SelectLabel></SelectLabel>

@@ -11,12 +11,12 @@ export function InOutValue({ value, prev, onChangePrev }: InOutValueProps) {
     <div className='flex flex-col items-center gap-y-2'>
       <label className='flex items-center gap-x-2'>
         評価値
-        <Input className='w-16 text-center' value={value} readOnly />
+        <Input className='w-24 text-center' value={value} readOnly />
       </label>
       <label className='flex items-center gap-x-2'>
         前回の値
         <Input
-          className='w-16 text-center'
+          className='w-24 text-center'
           value={prev}
           onChange={(e) => onChangePrev(Number(e.target.value))}
         />

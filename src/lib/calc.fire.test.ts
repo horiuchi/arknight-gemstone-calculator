@@ -6,7 +6,7 @@ describe('淬火彫刻コース', () => {
       {
         fire: 100,
         sky: 0,
-        glass: 0,
+        grass: 0,
         sand: 0,
       },
       0,
@@ -26,7 +26,7 @@ describe('淬火彫刻コース', () => {
     expect(result).toMatchObject({
       fire: { 0: 0, 1: 0, 2: 100, 3: 0, 4: 0 },
       sky: { 0: 0, 1: 0, 2: 0, 3: 0 },
-      glass: { 0: 0, 1: 0, 2: 0, 3: 0 },
+      grass: { 0: 0, 1: 0, 2: 0, 3: 0 },
       sand: { 0: 0 },
     });
   });
@@ -35,7 +35,7 @@ describe('淬火彫刻コース', () => {
       {
         fire: 100,
         sky: 0,
-        glass: 0,
+        grass: 0,
         sand: 0,
       },
       1000,
@@ -55,7 +55,7 @@ describe('淬火彫刻コース', () => {
     expect(result).toMatchObject({
       fire: { 0: 0, 1: 0, 2: 0, 3: 100, 4: 0 },
       sky: { 0: 0, 1: 0, 2: 0, 3: 0 },
-      glass: { 0: 0, 1: 0, 2: 0, 3: 0 },
+      grass: { 0: 0, 1: 0, 2: 0, 3: 0 },
       sand: { 0: 0 },
     });
   });
@@ -64,7 +64,7 @@ describe('淬火彫刻コース', () => {
       {
         fire: 100,
         sky: 0,
-        glass: 0,
+        grass: 0,
         sand: 0,
       },
       4500,
@@ -84,7 +84,7 @@ describe('淬火彫刻コース', () => {
     expect(result).toMatchObject({
       fire: { 0: 0, 1: 0, 2: 0, 3: 100, 4: 0 },
       sky: { 0: 0, 1: 0, 2: 0, 3: 0 },
-      glass: { 0: 0, 1: 0, 2: 0, 3: 0 },
+      grass: { 0: 0, 1: 0, 2: 0, 3: 0 },
       sand: { 0: 0 },
     });
   });
@@ -93,7 +93,7 @@ describe('淬火彫刻コース', () => {
       {
         fire: 100,
         sky: 0,
-        glass: 0,
+        grass: 0,
         sand: 0,
       },
       8000,
@@ -117,7 +117,7 @@ describe('淬火彫刻コース', () => {
     expect(result).toMatchObject({
       fire: { 0: 0, 1: 0, 2: 0, 3: 0, 4: 200 },
       sky: { 0: 0, 1: 0, 2: 0, 3: 0 },
-      glass: { 0: 0, 1: 0, 2: 0, 3: 0 },
+      grass: { 0: 0, 1: 0, 2: 0, 3: 0 },
       sand: { 0: 0 },
     });
   });
@@ -126,7 +126,7 @@ describe('淬火彫刻コース', () => {
       {
         fire: 100,
         sky: 0,
-        glass: 0,
+        grass: 0,
         sand: 0,
       },
       25000,
@@ -150,7 +150,7 @@ describe('淬火彫刻コース', () => {
     expect(result).toMatchObject({
       fire: { 0: 0, 1: 0, 2: 0, 3: 0, 4: 200 },
       sky: { 0: 0, 1: 0, 2: 0, 3: 0 },
-      glass: { 0: 0, 1: 0, 2: 0, 3: 0 },
+      grass: { 0: 0, 1: 0, 2: 0, 3: 0 },
       sand: { 0: 0 },
     });
   });

@@ -1,4 +1,54 @@
-import { BoardItem, BoardPattern, Kinds } from './types';
+import { BoardItem, BoardPattern, Kinds, WorkbenchItem } from './types';
+
+export function getBoardName(board: WorkbenchItem): string {
+  function getKindName(kind: Kinds): string {
+    switch (kind) {
+      case 'fire':
+        return '淬火彫刻';
+      case 'sky':
+        return '融合再誕';
+      case 'grass':
+        return 'ろ過精製';
+      case 'sand':
+        return '結晶増殖';
+      default:
+        return null as never;
+    }
+  }
+  function getGradeName(grade: number): string {
+    switch (grade) {
+      case 0:
+        return 'I';
+      case 1:
+        return 'II';
+      case 2:
+        return 'III';
+      case 3:
+        return 'IV';
+      default:
+        return null as never;
+    }
+  }
+  function getLevelName(level: number): string {
+    switch (level) {
+      case 0:
+        return '初級';
+      case 1:
+        return '中級';
+      case 2:
+        return '上級';
+      default:
+        return null as never;
+    }
+  }
+
+  if (board === 'blank') {
+    return '空';
+  } else if (board === 'locked') {
+    return '未解放';
+  }
+  return `${getLevelName(board.level)}${getKindName(board.kind)}${getGradeName(board.grade)}`;
+}
 
 export function getBoardPattern<K extends Kinds>(
   board: BoardItem<K>,
@@ -40,7 +90,7 @@ export function getBoardPattern<K extends Kinds>(
           return {
             inputs: [
               { kind: 'sky', level: 1 },
-              { kind: 'glass', level: 1 },
+              { kind: 'grass', level: 1 },
             ],
             output: [{ kind: 'sky', level: 2 }],
           };
@@ -55,29 +105,29 @@ export function getBoardPattern<K extends Kinds>(
         default:
           return null as never;
       }
-    case 'glass':
+    case 'grass':
       switch (board.grade) {
         case 0:
           if (board.level === 2) {
             return {
-              inputs: [{ kind: 'glass', level: 0 }],
-              output: [{ kind: 'glass', level: 1 }],
+              inputs: [{ kind: 'grass', level: 0 }],
+              output: [{ kind: 'grass', level: 1 }],
             };
           } else {
             return {
-              inputs: [{ kind: 'glass', level: 0 }],
-              output: [{ kind: 'glass', level: 1 }, { kind: 'sand' }],
+              inputs: [{ kind: 'grass', level: 0 }],
+              output: [{ kind: 'grass', level: 1 }, { kind: 'sand' }],
             };
           }
         case 1:
           return {
-            inputs: [{ kind: 'glass', level: 1 }],
-            output: [{ kind: 'glass', level: 2 }, { kind: 'sand' }],
+            inputs: [{ kind: 'grass', level: 1 }],
+            output: [{ kind: 'grass', level: 2 }, { kind: 'sand' }],
           };
         case 2:
           return {
-            inputs: [{ kind: 'glass', level: 2 }],
-            output: [{ kind: 'glass', level: 3 }, { kind: 'sand' }],
+            inputs: [{ kind: 'grass', level: 2 }],
+            output: [{ kind: 'grass', level: 3 }, { kind: 'sand' }],
           };
         default:
           return null as never;

@@ -1,17 +1,17 @@
-export const KindValues = ['fire', 'sky', 'glass', 'sand'] as const;
+export const KindValues = ['fire', 'sky', 'grass', 'sand'] as const;
 export type Kinds = (typeof KindValues)[number];
 
 export type LevelPerKind = {
   fire: 0 | 1 | 2 | 3 | 4;
   sky: 0 | 1 | 2 | 3;
-  glass: 0 | 1 | 2 | 3;
+  grass: 0 | 1 | 2 | 3;
   sand: 0;
 };
 
 export type GradePerKind = {
   fire: 0 | 1 | 2 | 3;
   sky: 0 | 1 | 2;
-  glass: 0 | 1 | 2;
+  grass: 0 | 1 | 2;
   sand: 0 | 1 | 2;
 };
 
