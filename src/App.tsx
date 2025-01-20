@@ -5,6 +5,7 @@ import { OutputCount } from './components/output-count';
 import { calculate } from './lib/calc';
 import { ArrowRight } from 'lucide-react';
 import { WorkbenchList } from './components/workbench-list';
+import { InOutValue } from './components/inout-value';
 
 function App() {
   const [values, setValues] = useState<ValuePerKinds>({
@@ -13,13 +14,14 @@ function App() {
     glass: 10,
     sand: 10,
   });
+  const [prev, setPrev] = useState(0);
   const [items, setItems] = useState<WorkbenchItems>({
     bench: ['blank', 'blank', 'locked', 'locked', 'locked', 'locked'],
     hands: ['blank', 'blank', 'blank'],
   });
   const [value, output] = useMemo(
-    () => calculate(values, items),
-    [items, values],
+    () => calculate(values, prev, items),
+    [items, prev, values],
   );
 
   const handleChangeValue = useCallback(
@@ -41,7 +43,7 @@ function App() {
         <WorkbenchList items={items} onChangeItems={setItems} />
         <ArrowRight size={32} />
         <div className='flex flex-col items-center gap-y-2'>
-          <h2 className='text-lg'>評価値: {value}</h2>
+          <InOutValue value={value} prev={prev} onChangePrev={setPrev} />
           <OutputCount values={output} />
         </div>
       </div>

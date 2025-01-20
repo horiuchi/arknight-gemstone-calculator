@@ -32,9 +32,10 @@ export const valueMap: Record<Kinds, Record<number, number>> = {
 
 export function calculate(
   values: ValuePerKinds,
+  prevValue: number,
   items: WorkbenchItems,
 ): [number, ValuePerKindsWithLevel] {
-  let totalValue = 0;
+  let totalValue = prevValue;
   const result: ValuePerKindsWithLevel = {
     fire: { 0: values.fire, 1: 0, 2: 0, 3: 0, 4: 0 },
     sky: { 0: values.sky, 1: 0, 2: 0, 3: 0 },
