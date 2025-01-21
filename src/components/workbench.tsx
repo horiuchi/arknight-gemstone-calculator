@@ -1,15 +1,23 @@
-import { WorkbenchItem } from '../lib/types';
+import { GradePerKind, Kinds, WorkbenchItem } from '../lib/types';
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
   SelectLabel,
+  SelectSeparator,
   SelectTrigger,
 } from './ui/select';
-import { useCallback } from 'react';
+import { Fragment, useCallback } from 'react';
 import { WorkbenchDisplayItem } from './workbench-display-item';
-import { convertFromString, convertToString } from '../lib/workbench-utils';
+import {
+  convertFromString,
+  convertToString,
+  getBoardName,
+} from '../lib/workbench-utils';
+import { getBoardPattern } from '../lib/boardPattern';
+import { MoveRight, Plus } from 'lucide-react';
+import { ElementIcon } from './element-icon';
 
 interface WorkbenchProps {
   item: WorkbenchItem;
@@ -30,60 +38,150 @@ export function Workbench({ item, onChangeItem }: WorkbenchProps) {
         <WorkbenchDisplayItem item={item} />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value='blank'>空</SelectItem>
-        <SelectItem value='locked'>未解放</SelectItem>
+        <SelectWorkbenchItem item='blank' />
+        <SelectWorkbenchItem item='locked' />
+
+        <SelectSeparator />
+
         <SelectGroup>
-          <SelectLabel></SelectLabel>
-          <SelectItem value='fire-0-0'>初級淬火彫刻I</SelectItem>
-          <SelectItem value='fire-0-1'>中級淬火彫刻I</SelectItem>
-          <SelectItem value='fire-0-2'>上級淬火彫刻I</SelectItem>
-          <SelectItem value='fire-1-0'>初級淬火彫刻II</SelectItem>
-          <SelectItem value='fire-1-1'>中級淬火彫刻II</SelectItem>
-          <SelectItem value='fire-1-2'>上級淬火彫刻II</SelectItem>
-          <SelectItem value='fire-2-0'>初級淬火彫刻III</SelectItem>
-          <SelectItem value='fire-2-1'>中級淬火彫刻III</SelectItem>
-          <SelectItem value='fire-2-2'>上級淬火彫刻III</SelectItem>
-          <SelectItem value='fire-3-0'>初級淬火彫刻IV</SelectItem>
-          <SelectItem value='fire-3-1'>中級淬火彫刻IV</SelectItem>
-          <SelectItem value='fire-3-2'>上級淬火彫刻IV</SelectItem>
+          <SelectWorkbenchGroupLabel kind='fire' grade={0} />
+          <SelectWorkbenchItem item={{ kind: 'fire', grade: 0, level: 0 }} />
+          <SelectWorkbenchItem item={{ kind: 'fire', grade: 0, level: 1 }} />
+          <SelectWorkbenchItem item={{ kind: 'fire', grade: 0, level: 2 }} />
         </SelectGroup>
         <SelectGroup>
-          <SelectLabel></SelectLabel>
-          <SelectItem value='sky-0-0'>初級融合再誕I</SelectItem>
-          <SelectItem value='sky-0-1'>中級融合再誕I</SelectItem>
-          <SelectItem value='sky-0-2'>上級融合再誕I</SelectItem>
-          <SelectItem value='sky-1-0'>初級融合再誕II</SelectItem>
-          <SelectItem value='sky-1-1'>中級融合再誕II</SelectItem>
-          <SelectItem value='sky-1-2'>上級融合再誕II</SelectItem>
-          <SelectItem value='sky-2-0'>初級融合再誕III</SelectItem>
-          <SelectItem value='sky-2-1'>中級融合再誕III</SelectItem>
-          <SelectItem value='sky-2-2'>上級融合再誕III</SelectItem>
+          <SelectWorkbenchGroupLabel kind='fire' grade={1} />
+          <SelectWorkbenchItem item={{ kind: 'fire', grade: 1, level: 0 }} />
+          <SelectWorkbenchItem item={{ kind: 'fire', grade: 1, level: 1 }} />
+          <SelectWorkbenchItem item={{ kind: 'fire', grade: 1, level: 2 }} />
         </SelectGroup>
         <SelectGroup>
-          <SelectLabel></SelectLabel>
-          <SelectItem value='grass-0-0'>初級ろ過精製I</SelectItem>
-          <SelectItem value='grass-0-1'>中級ろ過精製I</SelectItem>
-          <SelectItem value='grass-0-2'>上級ろ過精製I</SelectItem>
-          <SelectItem value='grass-1-0'>初級ろ過精製II</SelectItem>
-          <SelectItem value='grass-1-1'>中級ろ過精製II</SelectItem>
-          <SelectItem value='grass-1-2'>上級ろ過精製II</SelectItem>
-          <SelectItem value='grass-2-0'>初級ろ過精製III</SelectItem>
-          <SelectItem value='grass-2-1'>中級ろ過精製III</SelectItem>
-          <SelectItem value='grass-2-2'>上級ろ過精製III</SelectItem>
+          <SelectWorkbenchGroupLabel kind='fire' grade={2} />
+          <SelectWorkbenchItem item={{ kind: 'fire', grade: 2, level: 0 }} />
+          <SelectWorkbenchItem item={{ kind: 'fire', grade: 2, level: 1 }} />
+          <SelectWorkbenchItem item={{ kind: 'fire', grade: 2, level: 2 }} />
         </SelectGroup>
         <SelectGroup>
-          <SelectLabel></SelectLabel>
-          <SelectItem value='sand-0-0'>初級結晶増殖I</SelectItem>
-          <SelectItem value='sand-0-1'>中級結晶増殖I</SelectItem>
-          <SelectItem value='sand-0-2'>上級結晶増殖I</SelectItem>
-          <SelectItem value='sand-1-0'>初級結晶増殖II</SelectItem>
-          <SelectItem value='sand-1-1'>中級結晶増殖II</SelectItem>
-          <SelectItem value='sand-1-2'>上級結晶増殖II</SelectItem>
-          <SelectItem value='sand-2-0'>初級結晶増殖III</SelectItem>
-          <SelectItem value='sand-2-1'>中級結晶増殖III</SelectItem>
-          <SelectItem value='sand-2-2'>上級結晶増殖III</SelectItem>
+          <SelectWorkbenchGroupLabel kind='fire' grade={3} />
+          <SelectWorkbenchItem item={{ kind: 'fire', grade: 3, level: 0 }} />
+          <SelectWorkbenchItem item={{ kind: 'fire', grade: 3, level: 1 }} />
+          <SelectWorkbenchItem item={{ kind: 'fire', grade: 3, level: 2 }} />
+        </SelectGroup>
+
+        <SelectSeparator />
+
+        <SelectGroup>
+          <SelectWorkbenchGroupLabel kind='sky' grade={0} />
+          <SelectWorkbenchItem item={{ kind: 'sky', grade: 0, level: 0 }} />
+          <SelectWorkbenchItem item={{ kind: 'sky', grade: 0, level: 1 }} />
+          <SelectWorkbenchItem item={{ kind: 'sky', grade: 0, level: 2 }} />
+        </SelectGroup>
+        <SelectGroup>
+          <SelectWorkbenchGroupLabel kind='sky' grade={1} />
+          <SelectWorkbenchItem item={{ kind: 'sky', grade: 1, level: 0 }} />
+          <SelectWorkbenchItem item={{ kind: 'sky', grade: 1, level: 1 }} />
+          <SelectWorkbenchItem item={{ kind: 'sky', grade: 1, level: 2 }} />
+        </SelectGroup>
+        <SelectGroup>
+          <SelectWorkbenchGroupLabel kind='sky' grade={2} />
+          <SelectWorkbenchItem item={{ kind: 'sky', grade: 2, level: 0 }} />
+          <SelectWorkbenchItem item={{ kind: 'sky', grade: 2, level: 1 }} />
+          <SelectWorkbenchItem item={{ kind: 'sky', grade: 2, level: 2 }} />
+        </SelectGroup>
+
+        <SelectSeparator />
+
+        <SelectGroup>
+          <SelectWorkbenchGroupLabel kind='grass' grade={0} />
+          <SelectWorkbenchItem item={{ kind: 'grass', grade: 0, level: 0 }} />
+          <SelectWorkbenchItem item={{ kind: 'grass', grade: 0, level: 1 }} />
+          <SelectWorkbenchItem item={{ kind: 'grass', grade: 0, level: 2 }} />
+        </SelectGroup>
+        <SelectGroup>
+          <SelectWorkbenchGroupLabel kind='grass' grade={1} />
+          <SelectWorkbenchItem item={{ kind: 'grass', grade: 1, level: 0 }} />
+          <SelectWorkbenchItem item={{ kind: 'grass', grade: 1, level: 1 }} />
+          <SelectWorkbenchItem item={{ kind: 'grass', grade: 1, level: 2 }} />
+        </SelectGroup>
+        <SelectGroup>
+          <SelectWorkbenchGroupLabel kind='grass' grade={2} />
+          <SelectWorkbenchItem item={{ kind: 'grass', grade: 2, level: 0 }} />
+          <SelectWorkbenchItem item={{ kind: 'grass', grade: 2, level: 1 }} />
+          <SelectWorkbenchItem item={{ kind: 'grass', grade: 2, level: 2 }} />
+        </SelectGroup>
+
+        <SelectSeparator />
+
+        <SelectGroup>
+          <SelectWorkbenchGroupLabel kind='sand' grade={0} />
+          <SelectWorkbenchItem item={{ kind: 'sand', grade: 0, level: 0 }} />
+          <SelectWorkbenchItem item={{ kind: 'sand', grade: 0, level: 1 }} />
+          <SelectWorkbenchItem item={{ kind: 'sand', grade: 0, level: 2 }} />
+        </SelectGroup>
+        <SelectGroup>
+          <SelectWorkbenchGroupLabel kind='sand' grade={1} />
+          <SelectWorkbenchItem item={{ kind: 'sand', grade: 1, level: 0 }} />
+          <SelectWorkbenchItem item={{ kind: 'sand', grade: 1, level: 1 }} />
+          <SelectWorkbenchItem item={{ kind: 'sand', grade: 1, level: 2 }} />
+        </SelectGroup>
+        <SelectGroup>
+          <SelectWorkbenchGroupLabel kind='sand' grade={2} />
+          <SelectWorkbenchItem item={{ kind: 'sand', grade: 2, level: 0 }} />
+          <SelectWorkbenchItem item={{ kind: 'sand', grade: 2, level: 1 }} />
+          <SelectWorkbenchItem item={{ kind: 'sand', grade: 2, level: 2 }} />
         </SelectGroup>
       </SelectContent>
     </Select>
   );
+}
+
+interface SelectWorkbenchItemProps {
+  item: WorkbenchItem;
+}
+
+function SelectWorkbenchItem({ item }: SelectWorkbenchItemProps) {
+  return (
+    <SelectItem value={convertToString(item)}>{getBoardName(item)}</SelectItem>
+  );
+}
+
+interface SelectWorkbenchGroupLabelProps<K extends Kinds> {
+  kind: K;
+  grade: GradePerKind[K];
+}
+
+function SelectWorkbenchGroupLabel<K extends Kinds>({
+  kind,
+  grade,
+}: SelectWorkbenchGroupLabelProps<K>) {
+  const pattern = getBoardPattern({ kind, grade, level: 0 });
+  return <SelectLabel>
+    <div className='flex items-center -ml-6'>
+      {pattern.inputs.map((input, i) => (
+        <Fragment key={`${input.kind}-${input.level}`}>
+          {i > 0 && (
+            <span>
+              <Plus className='size-4' />
+            </span>
+          )}
+          <span>
+            <ElementIcon item={input} size='small' />
+          </span>
+        </Fragment>
+      ))}
+      <MoveRight className='size-4 mx-1' />
+      {pattern.output.map((output, i) => (
+        <Fragment key={`${output.kind}-${output.level}`}>
+          {i > 0 && (
+            <span>
+              <Plus className='size-4' />
+            </span>
+          )}
+          <span>
+            <ElementIcon item={output} size='small' />
+          </span>
+        </Fragment>
+      ))}
+      </div>
+  </SelectLabel>;
 }
