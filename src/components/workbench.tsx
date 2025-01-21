@@ -155,33 +155,35 @@ function SelectWorkbenchGroupLabel<K extends Kinds>({
   grade,
 }: SelectWorkbenchGroupLabelProps<K>) {
   const pattern = getBoardPattern({ kind, grade, level: 0 });
-  return <SelectLabel>
-    <div className='flex items-center -ml-6'>
-      {pattern.inputs.map((input, i) => (
-        <Fragment key={`${input.kind}-${input.level}`}>
-          {i > 0 && (
+  return (
+    <SelectLabel>
+      <div className='flex items-center -ml-6'>
+        {pattern.inputs.map((input, i) => (
+          <Fragment key={`${input.kind}-${input.level}`}>
+            {i > 0 && (
+              <span>
+                <Plus className='size-4' />
+              </span>
+            )}
             <span>
-              <Plus className='size-4' />
+              <ElementIcon item={input} size='small' />
             </span>
-          )}
-          <span>
-            <ElementIcon item={input} size='small' />
-          </span>
-        </Fragment>
-      ))}
-      <MoveRight className='size-4 mx-1' />
-      {pattern.output.map((output, i) => (
-        <Fragment key={`${output.kind}-${output.level}`}>
-          {i > 0 && (
+          </Fragment>
+        ))}
+        <MoveRight className='size-4 mx-1' />
+        {pattern.output.map((output, i) => (
+          <Fragment key={`${output.kind}-${output.level}`}>
+            {i > 0 && (
+              <span>
+                <Plus className='size-4' />
+              </span>
+            )}
             <span>
-              <Plus className='size-4' />
+              <ElementIcon item={output} size='small' />
             </span>
-          )}
-          <span>
-            <ElementIcon item={output} size='small' />
-          </span>
-        </Fragment>
-      ))}
+          </Fragment>
+        ))}
       </div>
-  </SelectLabel>;
+    </SelectLabel>
+  );
 }

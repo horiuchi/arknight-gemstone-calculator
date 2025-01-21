@@ -6,7 +6,10 @@ interface ElementIconProps<K extends Kinds> {
   size?: 'small' | 'normal';
 }
 
-export function ElementIcon<K extends Kinds>({ item, size }: ElementIconProps<K>) {
+export function ElementIcon<K extends Kinds>({
+  item,
+  size,
+}: ElementIconProps<K>) {
   const className = size === 'small' ? 'size-6' : 'size-8';
 
   return (

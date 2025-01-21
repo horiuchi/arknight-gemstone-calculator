@@ -6,14 +6,12 @@
 
 - [アークナイツ](https://www.arknights.jp/)のイベント「太陽すらも追い越して」の宝石刻印の評価値を計算するためのWebアプリケーションです。
 
-
 ## 📜 Available Scripts
 
 - pnpm dev - Starts the development server.
 - pnpm build - Builds the production-ready code.
 - pnpm lint - Runs ESLint to analyze and lint the code.
 - pnpm preview - Starts the Vite development server in preview mode.
-
 
 ## 📄 License
 
