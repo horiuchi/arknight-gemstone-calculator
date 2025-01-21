@@ -49,7 +49,7 @@ function App() {
         </div>
       </div>
       <div className='mt-8'>
-        <Preset setItems={setItems} />
+        <Preset input={values} setItems={setItems} />
       </div>
     </main>
   );
