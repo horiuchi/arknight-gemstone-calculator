@@ -6,6 +6,7 @@ import {
 } from '../lib/types';
 import { Input } from './ui/input';
 import { ElementIcon } from './element-icon';
+import { Fragment } from 'react/jsx-runtime';
 
 interface OutputCountProps {
   values: ValuePerKindsWithLevel;
@@ -26,7 +27,7 @@ export function OutputCount({ values }: OutputCountProps) {
               }
 
               return (
-                <>
+                <Fragment key={`${kind}-${level}`}>
                   <ElementIcon
                     item={{ kind, level: Number(level) as LevelPerKind[Kinds] }}
                   />
@@ -36,7 +37,7 @@ export function OutputCount({ values }: OutputCountProps) {
                     className='w-24 text-center'
                     readOnly
                   />
-                </>
+                </Fragment>
               );
             })}
           </div>
