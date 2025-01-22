@@ -91,11 +91,26 @@ const presets: WorkbenchItems[] = [
       { kind: 'fire', grade: 2, level: 2 },
     ],
   },
+  {
+    bench: [
+      { kind: 'grass', grade: 0, level: 2 },
+      { kind: 'sand', grade: 0, level: 2 },
+      { kind: 'sand', grade: 1, level: 2 },
+      { kind: 'sand', grade: 2, level: 2 },
+      { kind: 'sky', grade: 0, level: 2 },
+      { kind: 'sky', grade: 1, level: 1 },
+    ],
+    hands: [
+      { kind: 'fire', grade: 0, level: 2 },
+      { kind: 'fire', grade: 1, level: 2 },
+      { kind: 'fire', grade: 2, level: 2 },
+    ],
+  },
 ] as const;
 
 function searchStrongest(input: ValuePerKinds) {
   const results = presets.map((preset) => {
-    const [value, _] = calculate(input, 0, preset);
+    const [value] = calculate(input, 0, preset);
     return value;
   });
   const max = Math.max(...results);
@@ -122,6 +137,9 @@ export function Preset({ input, setItems }: PresetProps) {
         case '5':
           setItems(presets[4]);
           break;
+        case '6':
+          setItems(presets[5]);
+          break;
       }
       setValue(value);
     },
@@ -136,7 +154,7 @@ export function Preset({ input, setItems }: PresetProps) {
 
   return (
     <div className='flex items-center gap-x-2'>
-      <h2 className='text-nowrap'>クレイジーモード用のプリセット</h2>
+      <h2 className='text-nowrap'>プリセット</h2>
       <Select value={value} onValueChange={handleValueChange}>
         <SelectTrigger>
           <SelectValue placeholder='プリセットを選択して下さい' />
@@ -149,6 +167,9 @@ export function Preset({ input, setItems }: PresetProps) {
             空を使わない場合 (草1草2草3砂1砂2砂3)
           </SelectItem>
           <SelectItem value='5'>手抜き (炎4無無無無無)</SelectItem>
+          <SelectItem value='6'>
+            最後が逆かつ空2が中級 (草1砂1砂2砂3空1空2↓)
+          </SelectItem>
         </SelectContent>
       </Select>
       <Button onClick={handleSearchStrongest} variant='secondary'>

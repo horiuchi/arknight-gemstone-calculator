@@ -8,7 +8,7 @@ import {
   SelectSeparator,
   SelectTrigger,
 } from './ui/select';
-import { Fragment, useCallback } from 'react';
+import { Fragment, useCallback, useEffect, useState } from 'react';
 import { WorkbenchDisplayItem } from './workbench-display-item';
 import {
   convertFromString,
@@ -25,15 +25,21 @@ interface WorkbenchProps {
 }
 
 export function Workbench({ item, onChangeItem }: WorkbenchProps) {
+  const [value, setValue] = useState<string>(convertToString(item));
+  useEffect(() => {
+    setValue(convertToString(item));
+  }, [item]);
+
   const handleChange = useCallback(
     (value: string) => {
+      setValue(value);
       onChangeItem(convertFromString(value));
     },
     [onChangeItem],
   );
 
   return (
-    <Select defaultValue={convertToString(item)} onValueChange={handleChange}>
+    <Select value={value} onValueChange={handleChange}>
       <SelectTrigger className='size-fit border-primary rounded-full'>
         <WorkbenchDisplayItem item={item} />
       </SelectTrigger>
